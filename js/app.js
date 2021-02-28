@@ -27,25 +27,45 @@ const tableHeadEl = document.getElementById('tableHead');
 //   }
 
 
-
 tableHeadEl.addEventListener('click', event => {
     const sortNameEl = event.target.closest('.name');
     const sortUsernameEl = event.target.closest('.user-name');
     const sortEmailEl = event.target.closest('.email');
     const sortWebsiteEl = event.target.closest('.website');
     if (sortNameEl) {
-        console.log("click on name");
+        const namesArr = [];
+        USERS.forEach((user) => {
+            let nameEl = user.name;
+            namesArr.push(nameEl);
+        });
+        console.log(namesArr.sort());
         renderTableRows(USERS, tableDataEl);
+
     } else if (sortUsernameEl) {
-        console.log("click on username");
+        const userNamesArr = [];
+        USERS.forEach((user) => {
+            let userNamesEl = user.username;
+            userNamesArr.push(userNamesEl);
+        });
+        console.log(userNamesArr.sort());
         renderTableRows(USERS, tableDataEl);
-    }
-    else if (sortEmailEl) {
-        console.log("click on email");
+
+    } else if (sortEmailEl) {
+        const emailArr = [];
+        USERS.forEach((user) => {
+            let emailEl = user.email;
+            emailArr.push(emailEl);
+        });
+        console.log(emailArr.sort());
         renderTableRows(USERS, tableDataEl);
-    }
-    else if (sortWebsiteEl) {
-        console.log("click on website");
+
+    } else if (sortWebsiteEl) {
+        const websitesArr = [];
+        USERS.forEach((user) => {
+            let websiteEl = user.website;
+            websitesArr.push(websiteEl);
+        });
+        console.log(websitesArr.sort());
         renderTableRows(USERS, tableDataEl);
     }
 });
@@ -63,7 +83,7 @@ function renderTableRows(data_array, element) {
 
 function createTableRow(table_data) {
     return `
-    <tr>
+    <tr">
         <td>
             ${table_data.name}     
         </td>
