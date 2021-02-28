@@ -1,0 +1,19 @@
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  background: radial-gradient(farthest-corner at 50% 50%, white, #dcecf8);
+  width: 100%;
+}
+
+th {
+  padding: 10px;
+  border: 2px solid #057c4f;
+  cursor: pointer;
+  font-size: 24px;
+}
+th i {
+  transform: rotate(90deg);
+}
+td {
+  padding: 10px;
+  border: 2px solid #057c4f;
+}

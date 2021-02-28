@@ -1,4 +1,4 @@
-const DATA = JSON.parse(`[
+const DATA = JSON.stringify([
   {
     "id": 1,
     "name": "Leanne Graham",
@@ -229,7 +229,4 @@ const DATA = JSON.parse(`[
       "bs": "target end-to-end models"
     }
   }
-]`)
-
-
-console.log(DATA);
+]);
