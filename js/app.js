@@ -33,60 +33,108 @@ tableHeadEl.addEventListener('click', event => {
     const sortEmailEl = event.target.closest('.email');
     const sortWebsiteEl = event.target.closest('.website');
     if (sortNameEl) {
-        const namesArr = [];
-        USERS.forEach((user) => {
-            let nameEl = user.name;
-            namesArr.push(nameEl);
-            namesArr.sort();
+        USERS.sort((prev, next) => {
+            if ( prev.name < next.name ) return -1;
+            if ( prev.name < next.name ) return 1;
         });
-        console.log(namesArr);
-        USERS.forEach((user, i, array) => {
-            array[i] = {...array[i], name: namesArr[i]}
-        })
+        
+        console.log(USERS)
         renderTableRows(USERS, tableDataEl);
+        
+        // const arr = []
+        // for (let i = 0; i < USERS.length; i++) {
+        //     const user = USERS [i];
+        //     arr.push(user.name)
+        //     arr.sort()
+        //     if (arr[i]) {
+
+        //     }
+        // }
+        // console.log(arr);
 
     } else if (sortUsernameEl) {
-        const userNamesArr = [];
-        USERS.forEach((user) => {
-            let userNameEl = user.username;
-            userNamesArr.push(userNameEl);
-            userNamesArr.sort();
+        USERS.sort((prev, next) => {
+            if ( prev.username < next.username ) return -1;
+            if ( prev.username < next.username ) return 1;
         });
-        console.log(userNamesArr);
-        USERS.forEach((user, i, array) => {
-            array[i] = {...array[i], username: userNamesArr[i]}
-        })
+        
+        console.log(USERS)
         renderTableRows(USERS, tableDataEl);
 
     } else if (sortEmailEl) {
-        const emailArr = [];
-        USERS.forEach((user) => {
-            let emailEl = user.email;
-            emailArr.push(emailEl);
-            emailArr.sort();
+        USERS.sort((prev, next) => {
+            if ( prev.email < next.email ) return -1;
+            if ( prev.email < next.email ) return 1;
         });
-        console.log(emailArr);
-        USERS.forEach((user, i, array) => {
-            array[i] = {...array[i], email: emailArr[i]}
-        })
-        console.log();
+        
+        console.log(USERS)
         renderTableRows(USERS, tableDataEl);
 
     } else if (sortWebsiteEl) {
-        const websiteArr = [];
-        USERS.forEach((user) => {
-            let websiteEl = user.website;
-            websiteArr.push(websiteEl);
-            websiteArr.sort();
+        USERS.sort((prev, next) => {
+            if ( prev.website < next.website ) return -1;
+            if ( prev.website < next.website ) return 1;
         });
-        console.log(websiteArr);
-        USERS.forEach((user, i, array) => {
-            array[i] = {...array[i], website: websiteArr[i]}
-        })
-        console.log();
+        
+        console.log(USERS)
         renderTableRows(USERS, tableDataEl);
-
     }
+
+//     if (sortNameEl) {
+//         const namesArr = [];
+//         USERS.forEach((user) => {
+//             let nameEl = user.name;
+//             namesArr.push(nameEl);
+//             namesArr.sort();
+//         });
+//         console.log(namesArr);
+//         USERS.forEach((user, i, array) => {
+//             array[i] = {...array[i], name: namesArr[i]}
+//         })
+//         renderTableRows(USERS, tableDataEl);
+
+//     } else if (sortUsernameEl) {
+//         const userNamesArr = [];
+//         USERS.forEach((user) => {
+//             let userNameEl = user.username;
+//             userNamesArr.push(userNameEl);
+//             userNamesArr.sort();
+//         });
+//         console.log(userNamesArr);
+//         USERS.forEach((user, i, array) => {
+//             array[i] = {...array[i], username: userNamesArr[i]}
+//         })
+//         renderTableRows(USERS, tableDataEl);
+
+//     } else if (sortEmailEl) {
+//         const emailArr = [];
+//         USERS.forEach((user) => {
+//             let emailEl = user.email;
+//             emailArr.push(emailEl);
+//             emailArr.sort();
+//         });
+//         console.log(emailArr);
+//         USERS.forEach((user, i, array) => {
+//             array[i] = {...array[i], email: emailArr[i]}
+//         })
+//         console.log();
+//         renderTableRows(USERS, tableDataEl);
+
+//     } else if (sortWebsiteEl) {
+//         const websiteArr = [];
+//         USERS.forEach((user) => {
+//             let websiteEl = user.website;
+//             websiteArr.push(websiteEl);
+//             websiteArr.sort();
+//         });
+//         console.log(websiteArr);
+//         USERS.forEach((user, i, array) => {
+//             array[i] = {...array[i], website: websiteArr[i]}
+//         })
+//         console.log();
+//         renderTableRows(USERS, tableDataEl);
+
+//     }
 });
 
 
