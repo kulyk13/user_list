@@ -37,17 +37,25 @@ tableHeadEl.addEventListener('click', event => {
         USERS.forEach((user) => {
             let nameEl = user.name;
             namesArr.push(nameEl);
+            namesArr.sort();
         });
-        console.log(namesArr.sort());
+        console.log(namesArr);
+        USERS.forEach((user, i, array) => {
+            array[i] = {...array[i], name: namesArr[i]}
+        })
         renderTableRows(USERS, tableDataEl);
 
     } else if (sortUsernameEl) {
         const userNamesArr = [];
         USERS.forEach((user) => {
-            let userNamesEl = user.username;
-            userNamesArr.push(userNamesEl);
+            let userNameEl = user.username;
+            userNamesArr.push(userNameEl);
+            userNamesArr.sort();
         });
-        console.log(userNamesArr.sort());
+        console.log(userNamesArr);
+        USERS.forEach((user, i, array) => {
+            array[i] = {...array[i], username: userNamesArr[i]}
+        })
         renderTableRows(USERS, tableDataEl);
 
     } else if (sortEmailEl) {
@@ -55,18 +63,29 @@ tableHeadEl.addEventListener('click', event => {
         USERS.forEach((user) => {
             let emailEl = user.email;
             emailArr.push(emailEl);
+            emailArr.sort();
         });
-        console.log(emailArr.sort());
+        console.log(emailArr);
+        USERS.forEach((user, i, array) => {
+            array[i] = {...array[i], email: emailArr[i]}
+        })
+        console.log();
         renderTableRows(USERS, tableDataEl);
 
     } else if (sortWebsiteEl) {
-        const websitesArr = [];
+        const websiteArr = [];
         USERS.forEach((user) => {
             let websiteEl = user.website;
-            websitesArr.push(websiteEl);
+            websiteArr.push(websiteEl);
+            websiteArr.sort();
         });
-        console.log(websitesArr.sort());
+        console.log(websiteArr);
+        USERS.forEach((user, i, array) => {
+            array[i] = {...array[i], website: websiteArr[i]}
+        })
+        console.log();
         renderTableRows(USERS, tableDataEl);
+
     }
 });
 
