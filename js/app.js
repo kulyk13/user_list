@@ -27,116 +27,19 @@ const tableHeadEl = document.getElementById('tableHead');
 //   }
 
 
-tableHeadEl.addEventListener('click', event => {
-    const sortNameEl = event.target.closest('.name');
-    const sortUsernameEl = event.target.closest('.user-name');
-    const sortEmailEl = event.target.closest('.email');
-    const sortWebsiteEl = event.target.closest('.website');
-    if (sortNameEl) {
-        USERS.sort((prev, next) => {
-            if ( prev.name < next.name ) return -1;
-            if ( prev.name < next.name ) return 1;
-        });
-        
-        console.log(USERS)
-        renderTableRows(USERS, tableDataEl);
-        
-        // const arr = []
-        // for (let i = 0; i < USERS.length; i++) {
-        //     const user = USERS [i];
-        //     arr.push(user.name)
-        //     arr.sort()
-        //     if (arr[i]) {
+tableHeadEl && tableHeadEl.addEventListener('click', handleClick(USERS, tableDataEl));
 
-        //     }
-        // }
-        // console.log(arr);
-
-    } else if (sortUsernameEl) {
-        USERS.sort((prev, next) => {
-            if ( prev.username < next.username ) return -1;
-            if ( prev.username < next.username ) return 1;
-        });
-        
-        console.log(USERS)
-        renderTableRows(USERS, tableDataEl);
-
-    } else if (sortEmailEl) {
-        USERS.sort((prev, next) => {
-            if ( prev.email < next.email ) return -1;
-            if ( prev.email < next.email ) return 1;
-        });
-        
-        console.log(USERS)
-        renderTableRows(USERS, tableDataEl);
-
-    } else if (sortWebsiteEl) {
-        USERS.sort((prev, next) => {
-            if ( prev.website < next.website ) return -1;
-            if ( prev.website < next.website ) return 1;
-        });
-        
-        console.log(USERS)
-        renderTableRows(USERS, tableDataEl);
+function handleClick(array, domEl) {
+    return event => {
+        const thEl = event.target.closest('th');
+        if (thEl) {
+            const { key, order } = thEl.dataset
+            thEl.dataset.order *= -1
+            USERS.sort((a, b) => a[key].localeCompare(b[key]) * order)
+            renderTableRows(array, domEl)
+        }
     }
-
-//     if (sortNameEl) {
-//         const namesArr = [];
-//         USERS.forEach((user) => {
-//             let nameEl = user.name;
-//             namesArr.push(nameEl);
-//             namesArr.sort();
-//         });
-//         console.log(namesArr);
-//         USERS.forEach((user, i, array) => {
-//             array[i] = {...array[i], name: namesArr[i]}
-//         })
-//         renderTableRows(USERS, tableDataEl);
-
-//     } else if (sortUsernameEl) {
-//         const userNamesArr = [];
-//         USERS.forEach((user) => {
-//             let userNameEl = user.username;
-//             userNamesArr.push(userNameEl);
-//             userNamesArr.sort();
-//         });
-//         console.log(userNamesArr);
-//         USERS.forEach((user, i, array) => {
-//             array[i] = {...array[i], username: userNamesArr[i]}
-//         })
-//         renderTableRows(USERS, tableDataEl);
-
-//     } else if (sortEmailEl) {
-//         const emailArr = [];
-//         USERS.forEach((user) => {
-//             let emailEl = user.email;
-//             emailArr.push(emailEl);
-//             emailArr.sort();
-//         });
-//         console.log(emailArr);
-//         USERS.forEach((user, i, array) => {
-//             array[i] = {...array[i], email: emailArr[i]}
-//         })
-//         console.log();
-//         renderTableRows(USERS, tableDataEl);
-
-//     } else if (sortWebsiteEl) {
-//         const websiteArr = [];
-//         USERS.forEach((user) => {
-//             let websiteEl = user.website;
-//             websiteArr.push(websiteEl);
-//             websiteArr.sort();
-//         });
-//         console.log(websiteArr);
-//         USERS.forEach((user, i, array) => {
-//             array[i] = {...array[i], website: websiteArr[i]}
-//         })
-//         console.log();
-//         renderTableRows(USERS, tableDataEl);
-
-//     }
-});
-
+}
 
 renderTableRows(USERS, tableDataEl)
 
@@ -150,7 +53,7 @@ function renderTableRows(data_array, element) {
 
 function createTableRow(table_data) {
     return `
-    <tr">
+    <tr>
         <td>
             ${table_data.name}     
         </td>
@@ -165,3 +68,88 @@ function createTableRow(table_data) {
         </td>
     </tr>`
 }
+
+
+
+
+// const promise1 = new Promise(function (resolve, reject) {
+//     setTimeout(() => {
+//         let rand = Math.random()
+//         if (rand > 0.5) {
+//             resolve(rand)
+//         } else {
+//             reject('Error! - 1')
+//         }
+//     }, 1000);
+// })
+// const promise2 = new Promise(function (resolve, reject) {
+//     setTimeout(() => {
+//         let rand = Math.random()
+//         if (rand > 0.5) {
+//             resolve(rand)
+//         } else {
+//             reject('Error! - 2')
+//         }
+//     }, 900);
+// })
+// const promise3 = new Promise(function (resolve, reject) {
+//     setTimeout(() => {
+//         let rand = Math.random()
+//         if (rand > 0.5) {
+//             resolve(rand)
+//         } else {
+//             reject('Error! - 3')
+//         }
+//     }, 900);
+// })
+
+
+// getDataFromPromise(promise1, promise2, promise3)
+
+
+// async function getDataFromPromise(p) {
+//     try {
+//         const data = await p
+//         return data
+//     } catch (e) {
+//         return e
+//     }
+// }
+
+
+let timer = setTimeout(async function tick () {
+    
+    timer = setTimeout(tick, 1000);
+    
+}, 1000);
+
+
+
+// let answer = prompt('Your secret', 'secret')
+
+// const saySecret = prepareSecret(answer)
+// answer = null
+
+
+// function prepareSecret(secret) {
+//     return function (phrase) {
+//         return `${phrase} + ${secret}`
+//     }
+// }
+
+
+
+function powFabric(n) {
+    return num => num ** n
+}
+
+
+const pow4 = powFabric(4)
+const pow2 = powFabric(2)
+const pow100 = powFabric(100)
+
+
+
+console.log(pow4(4));
+console.log(pow2(4));
+console.log(pow100(4));
