@@ -54,16 +54,16 @@ function renderTableRows(data_array, element) {
 function createTableRow(table_data) {
     return `
     <tr>
-        <td>
+        <td data-label="Name">
             ${table_data.name}     
         </td>
-        <td>
+        <td data-label="Username">
             ${table_data.username}     
         </td>
-        <td>
+        <td data-label="Email">
             ${table_data.email}
         </td>
-        <td>
+        <td data-label="Website">
             ${table_data.website ?? '---'}
         </td>
     </tr>`
