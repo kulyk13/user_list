@@ -1,5 +1,5 @@
 //Global variables
-let USERS = JSON.parse(DATA);
+let USERS = [];
 const tableDataEl = document.getElementById('tableData');
 const tableHeadEl = document.getElementById('tableHead');
 // {
@@ -27,7 +27,15 @@ const tableHeadEl = document.getElementById('tableHead');
 //   }
 
 
-tableHeadEl && tableHeadEl.addEventListener('click', handleClick(USERS, tableDataEl));
+getData();
+
+async function getData() {
+    const data = await fetch('/data/users.json').then(r => r.json())
+    USERS = data;
+    renderTableRows(USERS, tableDataEl);
+    tableHeadEl && tableHeadEl.addEventListener('click', handleClick(USERS, tableDataEl));
+}
+
 
 function handleClick(array, domEl) {
     return event => {
@@ -41,7 +49,6 @@ function handleClick(array, domEl) {
     }
 }
 
-renderTableRows(USERS, tableDataEl)
 
 function renderTableRows(data_array, element) {
     let html = '';
